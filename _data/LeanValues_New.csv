@@ -1,4 +1,4 @@
-Year,demscore,"Executive (-1, +1)","Legislative (-1, 0, +1)","Judicial (-1, +1)",American Political Leaning,demderiv,OVERALL AMERICAN (L) CHANGE,OVERALL AMERICAN (C) CHANGE,
+Year,demscore,"Executive (-1, +1)","Legislative (-1, 0, +1)","Judicial (-1, +1)*",American Political Leaning,demderiv**,OVERALL AMERICAN (L) CHANGE,OVERALL AMERICAN (C) CHANGE,
 1972,4.364864865,-1,1,1,1,-,0,0,
 1973,4.38,-1,1,1,1,0.015135135,0.015135135,0,
 1974,4.381578947,-1,1,1,1,0.001578947,0.016714082,0,
@@ -48,11 +48,11 @@ Year,demscore,"Executive (-1, +1)","Legislative (-1, 0, +1)","Judicial (-1, +1)"
 2018,3.41025641,-1,-1,1,-1,0.030769231,-0.793217795,-0.161390659,
 2019,3.435897436,-1,0,,-1,0.025641026,-0.793217795,-0.135749633,
 ,,,,,,,-0.026440593,-0.012340876,
-,,,,*Data from Martin-Quinn Scores,,*1983 deriv = 1983 - 1981,,,
 ,,,,,,,,,
 ,,,,,,,,,
+,,,,,,,,,**1983 deriv = 1983 - 1981
 ,,,,,,,,,
-,,,,,,,,,
+,,,,,,,,,*Data from Martin-Quinn Scores
 ,,,,,,,,,
 ,,,,,,,,,Overall change = 
 ,,,,,,,,,-0.020194944
