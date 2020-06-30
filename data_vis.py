@@ -2,6 +2,7 @@ import pandas as pd
 import plotly.express as pl
 import plotly.io as pio
 import chart_studio.tools as tls
+from sklearn.preprocessing import PolynomialFeatures
 
 def import_clean_data():
     #Import data as dataframe
@@ -32,11 +33,16 @@ fig.update_traces(marker={
 
 ##TODO: Change font!
 fig.update_layout(
-    template="plotly_white", 
-    title="Democratic Score vs Yearly Change",
+    template="ggplot2+ygridoff+xgridoff", 
+    title="<b>Democratic Score vs Yearly Change</b>",
     yaxis_title="Democratic Change",
-    xaxis_title="Democratic Score"
+    titlefont={
+        'size': 20
+    },
+    font={
+        'family': 'Centabel Book'
+    }
 )
 
-#fig.show()
-pio.write_html(fig, file="demscoreVSdemderiv.html")
+fig.show()
+#pio.write_html(fig, file="demscoreVSdemderiv.html")
