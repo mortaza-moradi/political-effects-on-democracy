@@ -44,5 +44,5 @@ fig.update_layout(
     }
 )
 
-fig.show()
+#fig.show()
 #pio.write_html(fig, file="demscoreVSdemderiv.html")
