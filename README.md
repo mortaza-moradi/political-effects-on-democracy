@@ -1,8 +1,6 @@
-## Welcome to GitHub Pages
+repo/political-effects-on-democracy
 
-You can use the [editor on GitHub](https://github.com/mortaza-moradi/political-effects-on-democracy/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+goals: to exhibit insights in data collected on democratic institutions and the American political climate, as well as develop predictive models from statistically significant relations in order to extrapolate to future scenarios.
 
 ### Markdown
 
