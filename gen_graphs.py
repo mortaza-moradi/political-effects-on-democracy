@@ -29,7 +29,7 @@ fig.update_traces(marker={
     #    'width': 1,
     #    'color': '#381817'
     #},
-    'color': '#7ABF8C'
+    'color': '#24470A'
     })
 
 ##TODO: Change font!
@@ -42,14 +42,15 @@ fig.update_layout(
     yaxis_title="Democratic Change",
     plot_bgcolor="rgba(242, 242, 242, 0.75)",
     yaxis={
+        #Dinstinguish between increasing and decreasing
         'tickvals': [0], 'ticktext': [0],
         'tickcolor': '#FFF',
         'range': [-.35, .25]
     },
     xaxis={
-        'tickvals': [round(3.1 + x * .1, 1) for x in range(16)],
-        'ticktext': [round(3.1 + x * .1, 1) for x in range(16)],
-        'tickangle': 33,
+        #Only label the range, as values are meaningless to viewer
+        'tickvals': [3.1, 4.6],
+        'ticktext': [3.1, 4.6],
         'range': [2.7, 4.9],
         'tickcolor': '#FFF'
     },
@@ -59,7 +60,7 @@ fig.update_layout(
         'bgcolor': 'rgba(242, 242, 242, 0.75)'
     },
     titlefont={'size': 20},
-    font={'family': 'Didot', 'color': 'rgba(40, 40, 40, 0.7)'}
+    font={'family': 'Didot', 'color': 'rgba(40, 40, 40)'}
 )
 
 pio.write_html(fig, file="demscoreVSdemderiv.html")
