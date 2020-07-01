@@ -1,8 +1,8 @@
 import pandas as pd
 import plotly.express as pl
 import plotly.io as pio
-import chart_studio.tools as tls
-from sklearn.preprocessing import PolynomialFeatures
+#import chart_studio.tools as tls
+#from sklearn.preprocessing import PolynomialFeatures
 
 def import_clean_data():
     #Import data as dataframe
@@ -21,6 +21,7 @@ def import_clean_data():
     
 df = import_clean_data()
 
+#### FIRST GRAPH (DEM SCORE VS DEM DERIV) ####
 fig = pl.scatter(df, x="Democratic Score", y="DemScore Change")
 fig.update_traces(marker={
     'size': 10,
@@ -28,21 +29,39 @@ fig.update_traces(marker={
     #    'width': 1,
     #    'color': '#381817'
     #},
-    'color': '#B84F4C'
+    'color': '#7ABF8C'
     })
 
 ##TODO: Change font!
 fig.update_layout(
-    template="ggplot2+ygridoff+xgridoff", 
-    title="<b>Democratic Score vs Yearly Change</b>",
-    yaxis_title="Democratic Change",
-    titlefont={
-        'size': 20
+    template="ggplot2", 
+    title={
+        'text': "Democratic Score vs Yearly Change",
+        'x': .1,'y': .925
     },
-    font={
-        'family': 'Centabel Book'
-    }
+    yaxis_title="Democratic Change",
+    plot_bgcolor="rgba(242, 242, 242, 0.75)",
+    yaxis={
+        'tickvals': [0], 'ticktext': [0],
+        'tickcolor': '#FFF',
+        'range': [-.35, .25]
+    },
+    xaxis={
+        'tickvals': [round(3.1 + x * .1, 1) for x in range(16)],
+        'ticktext': [round(3.1 + x * .1, 1) for x in range(16)],
+        'tickangle': 33,
+        'range': [2.7, 4.9],
+        'tickcolor': '#FFF'
+    },
+    hoverlabel={
+        'font_family': 'Didot',
+        'font_size': 11,
+        'bgcolor': 'rgba(242, 242, 242, 0.75)'
+    },
+    titlefont={'size': 20},
+    font={'family': 'Didot', 'color': 'rgba(40, 40, 40, 0.7)'}
 )
 
-#fig.show()
-#pio.write_html(fig, file="demscoreVSdemderiv.html")
+pio.write_html(fig, file="demscoreVSdemderiv.html")
+
+############~~~~~~~~~~~~~~~~~~~~~~~~~###############

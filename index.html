@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <head>
     <title>Test Visualizations.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        iframe {opacity: .9}
+        #body-wrapper {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Merriweather', serif;
+            width: 700px; height: 80vh;
+            color: rgba(40, 40, 40, 0.75)
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 70; text-indent: 1vw;
+        }
+        .dataframes {
+            display: inline-block; 
+            border-left: 3px double rgba(40, 40, 40, 0.5);
+            border-bottom: 2px solid white;
+            border-top: 2px solid white;
+            margin-left: 50px;
+        }
     </style>
 </head>
 <body>
     <h1>American Liberalism and the Spread of Democracy</h1>
-    <center>
-        <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://mortaza-moradi.github.io/political-effects-on-democracy/demscoreVSdemderiv" height="525" width="800"></iframe>
-    </center>
+    <div id="body-wrapper">
+        <p><b>Often, </b>it is easy to dismiss the American partisan pendulum as a granted natural phenomenon, an endless oscillation that, with enough time, favors the entirety of the established political duality. Given these partisan swings as granted, only the hardiest policy recommendations and governmental adaptations are guaranteed survival - with the United States' understanding of democracy as the auxiliary beneficiary. However, one overlooked aspect of America's political fluctuations is the international effect of conservative or liberal trends and the subsequent effect that transitional instability has on the global proliferation of democratic values. In this piece, I will attempt to </p>
+        <center>
+            <div class="dataframes">
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="demscoreVSdemderiv.html" height="425" width="700"></iframe>
+            </div>
+        </center>
+    </div>
 </body>
