@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <head>
+    <!-- Color Scheme : #24470A , #E6E6E6 , #474747 , #FFFFFF -->
     <title>Test Visualizations.</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
+        a {
+            color: inherit;
+            font-style: italic; font-weight: bold;
+        }
+        #left-bar {
+            position: fixed;
+            padding: 0; margin: 0; top: 0; left: 0;
+            width: 8vw; height: 100vh;
+            background-color: #24470A;
+            border-right: 10px double #FFF;
+        }
         #body-wrapper {
             text-align: justify;
             font-family: 'Playfair Display', serif;
@@ -13,9 +25,18 @@
         #title {
             font-family: 'Playfair Display', serif;
             width: 840px; text-align: right;
+            
         } #title h1 {
-            font-size: 3em; font-weight: 700;
             color: #474747;
+            font-size: 3em; font-weight: 700;
+        }
+        .abstract {
+            font-style: italic;
+            font-size: .9em; width: 580px;
+            border-left: 1px solid black;
+            padding-left: 8px;
+            margin-left: 50%;
+            transform: translateX(-50%);
         }
         .dataframes {
             display: inline-block; 
@@ -27,15 +48,36 @@
     </style>
 </head>
 <body>
+    <div id="left-bar"></div>
     <center>
         <div id="title">
             <h1>On American Liberalism and <br /> Global Democracy</h1>
         </div>
         <div id="body-wrapper">
-            <p class="abstract">Here will go the abstract. It is a summary of the research inspiration, goals, and any methodology with a slight sneak peak into the findings.</p>
-            <p><class style="font-size: 25px">I</class>t is often easy to dismiss the American partisan pendulum as a granted natural phenomenon; an endless oscillation that, afforded patience, favors the entire established political duality. Given these partisan swings and their destructive tendencies, only the hardiest policy recommendations and governmental adaptations seem guaranteed survival - with our democratic institutions assumed as the auxiliary beneficiaries. However, one overlooked aspect of America's political fluctuations is the international effect of conservative or liberal trends and the subsequent effect that transitional instability has on the global proliferation of democratic values. In this piece, I will attempt to </p>
-            <div class="dataframes">
-                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="demscoreVSdemderiv.html" height="500" width="700"></iframe>
+            <p class="abstract">This research is my personal exploration of data combined from accurate sources on the politicization of the branches of America's federal government, and metrics of global democratization. I attempt to firstly identify correlational patterns in the data, and consequently explore eachs' possibility of causality on the advancement of democratic institutions across the world. Singular policy proposals aside, the findings in this exploration may be helpful in advancing the debate of how best to advance freedoms and ensure peace through large-scale governmental reorganization. </p>
+            <p>
+                <class style="font-size: 1.6em">I</class>t is often easy to dismiss the American partisan pendulum as a granted natural phenomenon; an endless oscillation that, afforded patience, favors both sides of the established political duality. Given these partisan swings and their politically destructive tendencies, only the hardiest policy recommendations and governmental adaptations seem guaranteed survival - with our democratic institutions assumed as the auxiliary beneficiaries. However, overlooked just as often, America's political fluctuations lastingly impact global views on democratic values. In this piece, I will examine correlational links between 
+                
+                <br /><br />
+            </p>
+            <ol>
+                <li><a href="#branchesVSglobal">the political leaning of America's branches of government - measures of global democratic proliferation</a></li>
+                <li><a href="#branchesVSderiv">the political leaning of America's branches of government - the rate of change in measures of global democratic proliferation</a></li>
+                <li><a href="#globalVSderiv">measures of global democratic proliferation - derivatives of those measures</a></li>
+            </ol>
+            
+            <div id="branchesVSglobal">
+                
+            </div>
+            
+            <div id="branchesVSderiv">
+                
+            </div>
+            
+            <div id="globalVSderiv">
+                <div class="dataframes">
+                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="demscoreVSdemderiv.html" height="500" width="700"></iframe>
+                </div>
             </div>
         </div>
     </center>
