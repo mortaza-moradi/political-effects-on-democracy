@@ -86,7 +86,7 @@ fig_demscoreVSdemderiv.update_layout(
 )
 
 #fig_demscoreVSdemderiv.show()
-pio.write_html(fig_demscoreVSdemderiv, file="demscoreVSdemderiv.html")
+#pio.write_html(fig_demscoreVSdemderiv, file="demscoreVSdemderiv.html")
 
 ############~~~~~~~~~~~~~~~~~~~~~~~~~###############
 
@@ -153,4 +153,134 @@ fig_leanVSdemscore.update_layout(
 
 
 #fig_leanVSdemscore.show()
-pio.write_html(fig_leanVSdemscore, file="leanVSdemscore.html")
+#pio.write_html(fig_leanVSdemscore, file="leanVSdemscore.html")
+
+##########------------------------##############
+
+##### SECOND GRAPH (DIVIDED BY THE THREE BRANCHES) #######
+
+
+###~ Legislative ~###
+fig_liberalVSdemscore = pl.box(x =df["Legislative (-1, 0, +1)"], y=df["Democratic Score"], points="all")
+
+fig_liberalVSdemscore.update_traces(marker={
+    'size': 10,
+    'color': 'rgba(71, 71, 71, .6)',
+    'opacity': .2
+})
+
+fig_liberalVSdemscore.update_layout(
+    template="ggplot2",
+    showlegend=False,
+    title={
+        'text': 'Leaning of Legislative Branch vs Democratic Score',
+        'x': .1,'y': .925
+    },
+    xaxis_title="Legislative Branch",
+    yaxis_title="Democratic Score",
+    plot_bgcolor="rgba(242, 242, 242, 0.75)",
+    yaxis={
+        #Values here are meaningless to viewer
+        'tickvals': [3.5, 4.5],
+        'tickcolor': '#FFF',
+        'range': [3, 4.8], 'zeroline': False
+    },
+    xaxis={
+        'tickcolor': '#FFF',
+        'showgrid': False, 'zeroline': False
+    },
+    hoverlabel={
+        'font_family': 'Didot',
+        'font_size': 11,
+        'bgcolor': 'rgba(242, 242, 242, 0.75)'
+    },
+    titlefont={'size': 20},
+    font={'family': 'Didot', 'color': 'rgba(40, 40, 40)'}
+)
+
+
+#fig_liberalVSdemscore.show()
+#pio.write_html(fig_liberalVSdemscore, file="liberalVSdemscore.html")
+
+###~ Executive ~###
+fig_executiveVSdemscore = pl.box(x =df["Executive (-1, +1)"], y=df["Democratic Score"], points="all")
+
+fig_executiveVSdemscore.update_traces(marker={
+    'size': 10,
+    'color': 'rgba(71, 71, 71, .6)',
+    'opacity': .2
+})
+
+fig_executiveVSdemscore.update_layout(
+    template="ggplot2",
+    showlegend=False,
+    title={
+        'text': 'Leaning of Executive Branch vs Democratic Score',
+        'x': .1,'y': .925
+    },
+    xaxis_title="Executive Branch",
+    yaxis_title="Democratic Score",
+    plot_bgcolor="rgba(242, 242, 242, 0.75)",
+    yaxis={
+        #Values here are meaningless to viewer
+        'tickvals': [3.5, 4.5],
+        'tickcolor': '#FFF',
+        'range': [3, 4.8], 'zeroline': False
+    },
+    xaxis={
+        'tickcolor': '#FFF',
+        'showgrid': False, 'zeroline': False
+    },
+    hoverlabel={
+        'font_family': 'Didot',
+        'font_size': 11,
+        'bgcolor': 'rgba(242, 242, 242, 0.75)'
+    },
+    titlefont={'size': 20},
+    font={'family': 'Didot', 'color': 'rgba(40, 40, 40)'}
+)
+
+#fig_executiveVSdemscore.show()
+#pio.write_html(fig_executiveVSdemscore, file="executiveVSdemscore.html")
+
+
+###~ Judicial ~###
+fig_judicialVSdemscore = pl.box(x =df["Judicial (-1, +1)"], y=df["Democratic Score"], points="all")
+
+fig_judicialVSdemscore.update_traces(marker={
+    'size': 10,
+    'color': 'rgba(71, 71, 71, .6)',
+    'opacity': .2
+})
+
+fig_judicialVSdemscore.update_layout(
+    template="ggplot2",
+    showlegend=False,
+    title={
+        'text': 'Leaning of Judicial Branch vs Democratic Score',
+        'x': .1,'y': .925
+    },
+    xaxis_title="Judicial Branch",
+    yaxis_title="Democratic Score",
+    plot_bgcolor="rgba(242, 242, 242, 0.75)",
+    yaxis={
+        #Values here are meaningless to viewer
+        'tickvals': [3.5, 4.5],
+        'tickcolor': '#FFF',
+        'range': [3, 4.8], 'zeroline': False
+    },
+    xaxis={
+        'tickcolor': '#FFF',
+        'showgrid': False, 'zeroline': False
+    },
+    hoverlabel={
+        'font_family': 'Didot',
+        'font_size': 11,
+        'bgcolor': 'rgba(242, 242, 242, 0.75)'
+    },
+    titlefont={'size': 20},
+    font={'family': 'Didot', 'color': 'rgba(40, 40, 40)'}
+)
+
+#fig_judicialVSdemscore.show()
+#pio.write_html(fig_judicialVSdemscore, file="judicialVSdemscore.html")
