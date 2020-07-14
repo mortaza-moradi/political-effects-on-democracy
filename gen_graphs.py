@@ -3,6 +3,7 @@ import numpy as np
 import plotly.express as pl
 import plotly.io as pio
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 #import statsmodels.formula.api as smf
 #import chart_studio.tools as tls
 #from sklearn.preprocessing import PolynomialFeatures
@@ -12,13 +13,14 @@ def import_clean_data():
     df = pd.read_csv("_data/LeanValues_New.csv")
     
     #Drop the attributes column, and corresponding empty rows
-    df = df.drop(columns=['Unnamed: 9', 'OVERALL AMERICAN (L) CHANGE', 'OVERALL AMERICAN (C) CHANGE'])
+    df = df.drop(columns=['Unnamed: 10', 'OVERALL AMERICAN (L) CHANGE', 'OVERALL AMERICAN (C) CHANGE'])
     df = df.drop(df.index[49:60])
     
     #Rename columns to be more explanatory
     df = df.rename(columns={'demscore': 'Democratic Score',
                            'demderiv**': 'DemScore Change',
-                           'Judicial (-1, +1)*': 'Judicial (-1, +1)'})
+                           'Judicial (-1, +1)*': 'Judicial (-1, +1)',
+                           'demderiv_backwards': 'DemScore Forward Change'})
     
     return df
     
@@ -155,132 +157,68 @@ fig_leanVSdemscore.update_layout(
 #fig_leanVSdemscore.show()
 #pio.write_html(fig_leanVSdemscore, file="leanVSdemscore.html")
 
-##########------------------------##############
+###########------------------------##############
 
 ##### SECOND GRAPH (DIVIDED BY THE THREE BRANCHES) #######
 
 
-###~ Legislative ~###
-fig_liberalVSdemscore = pl.box(x =df["Legislative (-1, 0, +1)"], y=df["Democratic Score"], points="all")
+fig_branchesVSdemscore = make_subplots(rows=1, cols=3)
 
-fig_liberalVSdemscore.update_traces(marker={
-    'size': 10,
-    'color': 'rgba(71, 71, 71, .6)',
-    'opacity': .2
-})
+fig_branchesVSdemscore.add_trace(go.Box(
+    y=df["Democratic Score"],
+    x=df["Legislative (-1, 0, +1)"],
+    name="Legislative",
+    marker_color="rgba(40, 40, 40, .6)"
+    ),
+              row=1, col=1
+ )
 
-fig_liberalVSdemscore.update_layout(
-    template="ggplot2",
-    showlegend=False,
+fig_branchesVSdemscore.add_trace(go.Box(
+    y=df["Democratic Score"],
+    x=df["Executive (-1, +1)"],
+    name="Executive",
+    opacity=.24,
+    marker_color="rgba(40, 40, 40)"
+    ),
+             row=1, col=2
+)
+fig_branchesVSdemscore.add_trace(go.Box(
+    y=df["Democratic Score"],
+    x=df["Judicial (-1, +1)"],
+    name="Judicial",
+    opacity=.24,
+    marker_color= "rgba(40, 40, 40)"
+    ),
+             row=1, col=3
+)
+
+fig_branchesVSdemscore.update_layout(
+    template="ggplot2+xgridoff",
     title={
-        'text': 'Leaning of Legislative Branch vs Democratic Score',
+        'text': "Branches of US Government vs Democratic Scores",
         'x': .1,'y': .925
     },
-    xaxis_title="Legislative Branch",
-    yaxis_title="Democratic Score",
-    plot_bgcolor="rgba(242, 242, 242, 0.75)",
-    yaxis={
-        #Values here are meaningless to viewer
-        'tickvals': [3.5, 4.5],
-        'tickcolor': '#FFF',
-        'range': [3, 4.8], 'zeroline': False
-    },
     xaxis={
-        'tickcolor': '#FFF',
-        'showgrid': False, 'zeroline': False
+        'showgrid': False,
+        'zeroline': False
     },
+    showlegend=False,
+    plot_bgcolor="rgba(242, 242, 242, 0.75)",
     hoverlabel={
         'font_family': 'Didot',
         'font_size': 11,
         'bgcolor': 'rgba(242, 242, 242, 0.75)'
     },
-    titlefont={'size': 20},
     font={'family': 'Didot', 'color': 'rgba(40, 40, 40)'}
 )
 
+fig_branchesVSdemscore.update_yaxes(title_text="Democratic Scores", fixedrange=True, tickvals=[3.5, 4, 4.5], tickcolor="#FFF", range=[3, 4.8], row=1, col=1)
+fig_branchesVSdemscore.update_yaxes(tickvals=[3.5, 4, 4.5], fixedrange=True, tickcolor="#FFF", tickfont={'color':'#FFF'}, range=[3, 4.8], row=1, col=2)
+fig_branchesVSdemscore.update_yaxes(tickvals=[3.5, 4, 4.5], fixedrange=True, tickcolor="#FFF", tickfont={'color':'#FFF'}, range=[3, 4.8], row=1, col=3)
 
-#fig_liberalVSdemscore.show()
-#pio.write_html(fig_liberalVSdemscore, file="liberalVSdemscore.html")
+fig_branchesVSdemscore.update_xaxes(title_text="Legislative", zeroline=False, fixedrange=True, tickcolor="#FFF", row=1, col=1)
+fig_branchesVSdemscore.update_xaxes(title_text="Executive", zeroline=False, fixedrange=True, tickcolor="#FFF", row=1, col=2)
+fig_branchesVSdemscore.update_xaxes(title_text="Judicial", zeroline=False, fixedrange=True, tickcolor="#FFF",row=1, col=3)
 
-###~ Executive ~###
-fig_executiveVSdemscore = pl.box(x =df["Executive (-1, +1)"], y=df["Democratic Score"], points="all")
-
-fig_executiveVSdemscore.update_traces(marker={
-    'size': 10,
-    'color': 'rgba(71, 71, 71, .6)',
-    'opacity': .2
-})
-
-fig_executiveVSdemscore.update_layout(
-    template="ggplot2",
-    showlegend=False,
-    title={
-        'text': 'Leaning of Executive Branch vs Democratic Score',
-        'x': .1,'y': .925
-    },
-    xaxis_title="Executive Branch",
-    yaxis_title="Democratic Score",
-    plot_bgcolor="rgba(242, 242, 242, 0.75)",
-    yaxis={
-        #Values here are meaningless to viewer
-        'tickvals': [3.5, 4.5],
-        'tickcolor': '#FFF',
-        'range': [3, 4.8], 'zeroline': False
-    },
-    xaxis={
-        'tickcolor': '#FFF',
-        'showgrid': False, 'zeroline': False
-    },
-    hoverlabel={
-        'font_family': 'Didot',
-        'font_size': 11,
-        'bgcolor': 'rgba(242, 242, 242, 0.75)'
-    },
-    titlefont={'size': 20},
-    font={'family': 'Didot', 'color': 'rgba(40, 40, 40)'}
-)
-
-#fig_executiveVSdemscore.show()
-#pio.write_html(fig_executiveVSdemscore, file="executiveVSdemscore.html")
-
-
-###~ Judicial ~###
-fig_judicialVSdemscore = pl.box(x =df["Judicial (-1, +1)"], y=df["Democratic Score"], points="all")
-
-fig_judicialVSdemscore.update_traces(marker={
-    'size': 10,
-    'color': 'rgba(71, 71, 71, .6)',
-    'opacity': .2
-})
-
-fig_judicialVSdemscore.update_layout(
-    template="ggplot2",
-    showlegend=False,
-    title={
-        'text': 'Leaning of Judicial Branch vs Democratic Score',
-        'x': .1,'y': .925
-    },
-    xaxis_title="Judicial Branch",
-    yaxis_title="Democratic Score",
-    plot_bgcolor="rgba(242, 242, 242, 0.75)",
-    yaxis={
-        #Values here are meaningless to viewer
-        'tickvals': [3.5, 4.5],
-        'tickcolor': '#FFF',
-        'range': [3, 4.8], 'zeroline': False
-    },
-    xaxis={
-        'tickcolor': '#FFF',
-        'showgrid': False, 'zeroline': False
-    },
-    hoverlabel={
-        'font_family': 'Didot',
-        'font_size': 11,
-        'bgcolor': 'rgba(242, 242, 242, 0.75)'
-    },
-    titlefont={'size': 20},
-    font={'family': 'Didot', 'color': 'rgba(40, 40, 40)'}
-)
-
-#fig_judicialVSdemscore.show()
-#pio.write_html(fig_judicialVSdemscore, file="judicialVSdemscore.html")
+#fig_branchesVSdemscore.show()
+#pio.write_html(fig_branchesVSdemscore, file="branchesVSdemscore.html")
