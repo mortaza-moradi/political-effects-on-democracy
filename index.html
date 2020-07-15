@@ -18,7 +18,7 @@
             position: fixed;
             padding: 0; margin: 0; top: 0; left: 0;
             width: 8vw; height: 100vh;
-            background-color: #24470A;
+            background-color: #474747;
             border-right: 10px double #FFF;
         }
         #body-wrapper {
@@ -65,7 +65,7 @@
         <div id="body-wrapper">
             <p class="abstract">This research is my personal exploration of data combined from accurate sources on the politicization of the branches of America's federal government, and metrics of global democratization. I attempt to firstly identify correlational patterns in the data, and consequently explore eachs' possibility of causality on the advancement of democratic institutions across the world. Singular policy proposals aside, the findings in this exploration may be helpful in advancing the debate of how best to expand democratic freedom and ensure peace through large-scale governmental reorganization. </p>
             <p>
-                <class style="font-size: 1.6em">I</class>t is often easy to dismiss the American partisan pendulum as a granted natural phenomenon; an endless oscillation that, afforded patience, favors both sides of the established political duality. Given these partisan swings and their politically destructive tendencies, only the hardiest policy recommendations and governmental adaptations seem guaranteed survival - with our democratic institutions hopefully benefiting. However, America's taken-for-granted political fluctuations and their consequences lastingly impact global views on democratic values. In this piece, I will firstly examine correlational links between the political leaning of U.S. branches of government, global democratic advancement, and how quickly that advancement changes in order to then hypothesize about the causal relationship of these metrics.
+                <class style="font-size: 1.6em">I</class>t is often easy to dismiss the American partisan pendulum as a granted natural phenomenon; an endless oscillation that, afforded patience, favors both sides of the established political duality. Given these partisan swings and their politically destructive tendencies, only the hardiest policy recommendations and governmental adaptations seem guaranteed survival - with our democratic institutions hopefully beneficiaries. However, do these taken-for-granted political fluctuations lastingly impact global views on democratic values? In this piece, I will firstly examine correlational links between the political leaning of U.S. branches of government, global democratic advancement, and how quickly that advancement changes in order to then hypothesize about any potential causal relationship of these metrics.
                 
                 
                 <br />
@@ -103,22 +103,25 @@
                 Data Processing and Sources
             </h2>
             <p>
-                To find a statistically robust measure of democracy, I turned to Freedom House<a href="https://freedomhouse.org/countries/nations-transit/scores"><sup>[1]</sup></a> for their democratic scoring of differing levels of government. Their scoring measures eight factors pertinent to a balanced and functinoing democracy - national governance, local governance, electoral process, independent media, civil society, judicial framework, judicial independence, and corruption. Many of Freedom House's factors were not mentinoed in other versions of democratic scores, and so became my preferred.
+                To find a statistically robust measure of democracy, I turned to Freedom House<a href="https://freedomhouse.org/countries/nations-transit/scores"><sup>[1]</sup></a> for their democratic scoring of different form of government. Their scoring measures eight factors pertinent to a balanced and functinoing democracy - national governance, local governance, electoral process, independent media, civil society, judicial framework, judicial independence, and corruption. Many of Freedom House's factors were not mentinoed in other versions of democratic scores, and so their data became my preferred for this project.
                 
                 <br /><br />
                 
-                As there is no standardized agglomerized metric for the United State's political leaning as a whole, I constructed a crude version that graded the political leaning of each branch individually, and then added them together to construct the country's overall leaning. Standardizing liberal as positive and conservative as negative, for the executive branch each president was graded a +1 if they were liberal, and a -1 if they were conservative. For the legislative, Congress was given a +1 if both the House of Representatives and the Senate had liberal majorities, +0 if split, and -1 if both chambers were conservative. For the judicial branch, I relied on measurements from the Martin-Quinn Project<a href="https://mqscores.lsa.umich.edu"><sup>[2]</sup></a>, which tracks Supreme Court Justices' ideology over time, and grades the overall political leaning by averaging the leanings of the Justices. To help standardize this metric with the other two branches, a Supreme Court that averaged liberal was graded +1, and if conservative, -1.
+                As there is no standardized agglomerized metric for the United State's political leaning as a whole, I constructed a crude version that graded the political leaning of each branch individually, and then added them together to represent the country's overall leaning. Standardizing liberal as positive and conservative as negative, for the executive branch each president was graded a +1 if they were of liberal ideologies, and a -1 if they were conservative. For the legislative, Congress was given a +1 if both the House of Representatives and the Senate had liberal majorities, +0 if split, and -1 if both chambers were conservative. For the judicial branch, I relied on measurements from the Martin-Quinn Project<a href="https://mqscores.lsa.umich.edu"><sup>[2]</sup></a>, which tracks Supreme Court Justices' ideology over time, and grades the branch's overall political leaning by averaging the leanings of the Justices. To help standardize this metric with the other two branches, a Supreme Court that averaged liberal was graded +1, if conservative, -1.
                 
                 <br /><br />
                 
-                All compiled data can be found in the github repository.
+                <div style="float: right; font-size: .8em">*All compiled and cleaned data can be found in the github repository.</div>
             </p>
             
             <div id="branchesVSglobal">
                 <br />
                 <h2 class="subheading">American Political Leaning</h2>
                 <p>
-                    To first take a broad overview on the status of America's internal politics, 
+                    To analyze how the political sway of the United States affects democracies around the world, I calculate a linear regression between the aggregate measure of overall American political leaning and the average worldwide democratic score for a particular year. This  linear regression will simply calculate how strongly one metric is correlated with the other, and can provide a measure for how much of the variance in one is associated with variance in the other.
+                    
+                    <br /><br />
+                    The results:
                 </p>
                 
                 <div class="dataframes">

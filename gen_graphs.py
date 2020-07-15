@@ -64,6 +64,7 @@ fig_demscoreVSdemderiv.update_layout(
         'x': .1,'y': .925
     },
     yaxis_title="Democratic Change",
+    xaxis_title="fig c. Democratic Score",
     plot_bgcolor="rgba(242, 242, 242, 0.75)",
     yaxis={
         #Dinstinguish between increasing and decreasing
@@ -129,7 +130,7 @@ fig_leanVSdemscore.update_layout(
         'x': .1,'y': .925
     },
     yaxis_title="Democratic Score",
-    xaxis_title="American Political Leaning",
+    xaxis_title="fig a. American Political Leaning",
     plot_bgcolor="rgba(242, 242, 242, 0.75)",
     yaxis={
         #Dinstinguish between increasing and decreasing
@@ -216,9 +217,9 @@ fig_branchesVSdemscore.update_yaxes(title_text="Democratic Scores", fixedrange=T
 fig_branchesVSdemscore.update_yaxes(tickvals=[3.5, 4, 4.5], fixedrange=True, tickcolor="#FFF", tickfont={'color':'#FFF'}, range=[3, 4.8], row=1, col=2)
 fig_branchesVSdemscore.update_yaxes(tickvals=[3.5, 4, 4.5], fixedrange=True, tickcolor="#FFF", tickfont={'color':'#FFF'}, range=[3, 4.8], row=1, col=3)
 
-fig_branchesVSdemscore.update_xaxes(title_text="Legislative", zeroline=False, fixedrange=True, tickcolor="#FFF", row=1, col=1)
-fig_branchesVSdemscore.update_xaxes(title_text="Executive", zeroline=False, fixedrange=True, tickcolor="#FFF", row=1, col=2)
-fig_branchesVSdemscore.update_xaxes(title_text="Judicial", zeroline=False, fixedrange=True, tickcolor="#FFF",row=1, col=3)
+fig_branchesVSdemscore.update_xaxes(title_text="fig b. Legislative", zeroline=False, fixedrange=True, tickcolor="#FFF", row=1, col=1)
+fig_branchesVSdemscore.update_xaxes(title_text="fig b. Executive", zeroline=False, fixedrange=True, tickcolor="#FFF", row=1, col=2)
+fig_branchesVSdemscore.update_xaxes(title_text="fig b. Judicial", zeroline=False, fixedrange=True, tickcolor="#FFF",row=1, col=3)
 
 #fig_branchesVSdemscore.show()
 #pio.write_html(fig_branchesVSdemscore, file="branchesVSdemscore.html")
