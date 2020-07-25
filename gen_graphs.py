@@ -77,7 +77,7 @@ fig_yearVSdemscore.update_layout(
 #pio.write_html(fig_yearVSdemscore, 'yearVSdemscore.html')
 
 
-#### FIRST GRAPH (DEM SCORE VS DEM DERIV) ####
+#### LAST GRAPH (DEM SCORE VS DEM DERIV) ####
 fig_demscoreVSdemderiv = pl.scatter(df, x="Democratic Score", y="DemScore Change")
 
 #Fit polynomial regression (quadratic)
@@ -96,7 +96,7 @@ y_hat = f(x_inc)
 
 fig_demscoreVSdemderiv.add_trace(go.Scatter(x=x_inc, y=y_hat, name="Trendline", hoverinfo="skip", mode="lines",
                                             line={
-                                                'color': '#24470A',
+                                                'color': '#004609',
                                                 'dash': 'dash',
                                                 'width': 4
 }))
@@ -139,8 +139,8 @@ fig_demscoreVSdemderiv.update_layout(
     font={'family': 'Didot', 'color': 'rgba(40, 40, 40)'}
 )
 
-#fig_demscoreVSdemderiv.show()
-#pio.write_html(fig_demscoreVSdemderiv, file="demscoreVSdemderiv.html")
+fig_demscoreVSdemderiv.show()
+pio.write_html(fig_demscoreVSdemderiv, file="demscoreVSdemderiv.html")
 
 ############~~~~~~~~~~~~~~~~~~~~~~~~~###############
 
@@ -168,7 +168,7 @@ y_hat = f(x_inc)
 
 fig_leanVSdemscore.add_trace(go.Scatter(x=x_inc, y=y_hat, name="TrendLine", hoverinfo="skip", mode="lines", 
                                         line={
-                                                'color': '#24470A',
+                                                'color': '#004609',
                                                 'dash': 'solid',
                                                 'width': 4
 }))
