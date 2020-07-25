@@ -4,7 +4,7 @@
     <title>Test Visualizations.</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        [data-href] {cursor: pointer}
+        a {color: inherit}
         th {
             padding: 5%; background-color: white;
             border-top: 3px double #E6E6E6; border-bottom: 3px double #E6E6E6;
@@ -52,7 +52,7 @@
             margin-left: 50px;
         }
         .subheading {
-            text-align: center; text-decoration: overline underline;
+            text-align: center; text-decoration: overline ;
         }
     </style>
 </head>
@@ -63,12 +63,10 @@
             <h1>On American Liberalism and <br /> Global Democracy</h1>
         </div>
         <div id="body-wrapper">
-            <p class="abstract">This research is my personal exploration of data combined from accurate sources on the politicization of the branches of America's federal government, and metrics of global democratization. I attempt to firstly identify correlational patterns in the data, and consequently explore eachs' possibility of causality on the advancement of democratic institutions across the world. Singular policy proposals aside, the findings in this exploration may be helpful in advancing the debate of how best to expand democratic freedom and ensure peace through large-scale governmental reorganization. </p>
+            <p class="abstract">This research is my personal exploration of data combined from accurate sources on the political lean of the branches of America's federal government, and metrics of global democratization. I attempt to firstly identify correlational patterns in the data, and consequently explore eachs' possibility of causality on the advancement of democratic institutions across the world. Singular policy proposals aside, the findings in this exploration may be helpful in advancing the debate of how best to expand democratic freedom and ensure peace through large-scale governmental reorganization. </p>
             <p>
-                <class style="font-size: 1.6em">I</class>t is often easy to dismiss the American partisan pendulum as a granted natural phenomenon; an endless oscillation that, afforded patience, favors both sides of the established political duality. Given these partisan swings and their politically destructive tendencies, only the hardiest policy recommendations and governmental adaptations seem guaranteed survival - with our democratic institutions hopefully beneficiaries. However, do these taken-for-granted political fluctuations lastingly impact global views on democratic values? In this piece, I will firstly examine correlational links between the political leaning of U.S. branches of government, global democratic advancement, and how quickly that advancement changes in order to then hypothesize about any potential causal relationship of these metrics.
-                
-                
-                <br />
+                <class style="font-size: 1.6em">I</class>t is often easy to dismiss the American partisan pendulum as a granted natural phenomenon; an endless oscillation that, afforded patience, favors both sides of the established political duality. Given these partisan swings and their politically destructive tendencies, only the hardiest policy recommendations and governmental adaptations seem guaranteed survival &mdash; with our democratic institutions hopefully beneficiaries. However, do these taken-for-granted domestic political fluctuations lastingly impact global views on democratic values, lastingly impact global democratic institutions? In this piece, I will first examine correlational links between the political leaning of U.S. branches of government and global democratic advancement in order to then hypothesize about any potential causal relationship of these metrics in an effort to reveal additional global-scale political repurcussions of civil change.
+            
             </p>
             <!--<table>
                 
@@ -100,7 +98,7 @@
             
             <br />
             <h2 class="subheading">
-                Data Processing and Sources
+                Data Preprocessing and Sources
             </h2>
             <p>
                 To find a statistically robust measure of democracy, I turned to Freedom House<a href="https://freedomhouse.org/countries/nations-transit/scores"><sup>[1]</sup></a> for their democratic scoring of different form of government. Their scoring measures eight factors pertinent to a balanced and functinoing democracy - national governance, local governance, electoral process, independent media, civil society, judicial framework, judicial independence, and corruption. Many of Freedom House's factors were not mentinoed in other versions of democratic scores, and so their data became my preferred for this project.
@@ -111,17 +109,28 @@
                 
                 <br /><br />
                 
-                <div style="float: right; font-size: .8em">*All compiled and cleaned data can be found in the github repository.</div>
+                <class style="float: right; font-size: .8em">All compiled and cleaned data can be found in the github repository.</class>
             </p>
-            
+        
             <div id="branchesVSglobal">
                 <br />
-                <h2 class="subheading">American Political Leaning</h2>
+                <h2 class="subheading">Analysis</h2>
                 <p>
-                    To analyze how the political sway of the United States affects democracies around the world, I calculate a linear regression between the aggregate measure of overall American political leaning and the average worldwide democratic score for a particular year. This  linear regression will simply calculate how strongly one metric is correlated with the other, and can provide a measure for how much of the variance in one is associated with variance in the other.
+                    To understand the significance of the following correlations, first a brief overview on the overall political and societal environment of the past half century. In this timeframe, worldwide political institutions have been subject to a great number of external pressures, from the Vietnam war to the fall of the Soviet Union, from the construction of the Internet to the economic fallout of the Great Recession, democracy has been in a constant atmosphere of flux. Consequently, as reflected in Freedom House's data on the spread of democracy, the average worldwide score of democratic values has fallen by a fifth in the timeframe data exists for - seen  below in figure (a).
+                </p>
+                <div class="dataframes">
+                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="yearVSdemscore.html" height="500" width="700"></iframe>
+                </div>
+                <p>
+                    
+                </p>
+                
+                <p>
+                    Therefore, any analysis of how the political sway of the United States  affects democracies around the world must be held in the shadow of numerous external forces that sway the underlying compositions of bodies politic. Any true experimental techniques &mdash; techniques such as difference-in-differences estimation or isolating independent measures &mdash; become nearly impossible due to the difficulty of untangling any individual variables, and, as such, correlational regressions appear the  most salient method of exposing statistically-significant relationships.
                     
                     <br /><br />
-                    The results:
+                    
+                    To begin, I first calculate a linear regression between the measure of overall American political leaning and the average worldwide democratic score for a particular year. This  linear regression simply reveals how strongly one metric is correlated with the other, and therefore acts as a measure for how much of the variance in one is associated with variance in the other. As we can see below in figure (b), there is a significant positive correlation between how liberal the branches of American government are (+3 being equivalent to all three branches being liberal) and the average worldwide democratic score:
                 </p>
                 
                 <div class="dataframes">
@@ -129,41 +138,53 @@
                 </div>
                 
                 <p>
-                    The 
+                    The results of this linear regression are: there is a statistically significant (p &lt; .05) positive correlation bettween the two variables. The slope of the regression is calculated as .10, meaning that for every branch that becomes liberal, there is an increase of .10 in associated average worldwide democracy scores. For comparison, the Arab Spring &mdash; the period of extreme violence and political turmoil in the late 2000's-early 2010's in which the Arab world enacted major governmental reforms decentralizing power &mdash; led to a worldwide average increase in democracy scores of .06. As the United States is not given disproportionate weight in the rankings, this strong correlation cannot be simply attributed to the fact that liberal government may enact changes that are typically associated with the values Freedom House's democratic score measures &mdash; ergo, the change cannot be explained by the United States' internal politics alone.
+                    
+                    <br /><br />
+                    
+                    Other than American internal politics, this positive correlation might be attributable to a few causes. Again, because of our inability to draw conclusions of causation, we are left to speculate on the direcitonality and meaningfulness of correlates. Given the political nature of both variables, I do wish to <b><mark>rule out the possibility of a meaningless chance correlation.</mark></b> The remaining options are as follows: there is a one-way influence between America's political leaning and worldwide democratic scores (or vice versa), both variables influence each other in a sort of cyclical causation, or both are directly influenced by an external, unseen variable. 
+                    
+                    <br /><br />
+                    
+                    If there were a one-directional relationship from American political leaning to world democratic scores,  there would be a statistically significant positive relationship between American political leaning and the derivative of worldwide democratic scores &mdash; when American government becomes more liberal, an associated positive increase in the direction of change in democratic scores should be observed. In other words, when America becomes more liberal, world democratic scores should, if declining, reverse and if increasing, increase at a faster rate (assuming that there is a one-directional causal-esque relationship). And vice versa, if there is a one-directional relationship from world democratic scores unto American political leaning, we should be able to observe a statistically significant relationship between world democratic scores and the derivative of America's political leaning.
+                    
+                    <br /><br />
+                    
+                    <b><mark>Neither one-directional relationship is observed.</mark></b>
+                    
+                    <br /><br />
+                    
+                    As for cyclical causality, if there existed this type of causal or causal-esque relationship, we would both be able to observe statistically significant relationships going in both directions with respect to one metric and the derivative of the other, and a feedback loop in which higher average worldwide democratic scores would lead to higher levels of liberalism in the United States, which would then feed back into pushing average worldwide democratic scores higher, so on and so forth. But first, it must be made certain that the metrics are not self-cyclical, as any form of self-cyclicality would show as indicative of overall cyclicality between the two metrics. To see if these self-cyclicalities exist, we run simple regressions between the metric itself and the derivative of the metric. For average worldwide democratic scores, the data at first glance alarmingly resembled a self-cyclical metric, with increasing derivatives when democratic scores were both relatively low and relatively high. However, after running a quadratic regression to capture the bimodal nature of the data &mdash; seen below in figure (d) &mdash; no statistically significant relationship was found.
+                    
+                </p>
+                <div id="globalVSderiv">
+                    <div class="dataframes">
+                        <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="demscoreVSdemderiv.html" height="500" width="700"></iframe>
+                    </div>
+                </div>
+                    
+                <p>
+                    For American political leanings, there was no indication of a bimodal nature, nor a statistically significant relationship between the metric itself and its derivative, thereby eliminating the risk of self-cyclicality skewing our results. And, after running regressions on relationships between both metrics and the derivative of the other,
+                    <b><mark>neither element of a cyclically causal chain was observed.</mark></b>
                 </p>
                 
-                <!--<table class="ind-branches">
-                    <tr>
-                        <td>
-                            <div class="dataframes">
-                                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="liberalVSdemscore.html" height="500" width="200"></iframe>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="dataframes">
-                                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="executiveVSdemscore.html" height="500" width="200"></iframe>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="dataframes">
-                                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="judicialVSdemscore.html" height="500" width="200"></iframe>
-                            </div>
-                        </td>
-                    </tr>
-                </table>-->
-                <div class="dataframes">
-                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="branchesVSdemscore.html" height="500" width="700"></iframe>
-                </div>
-            </div>
-            
-            <div id="branchesVSderiv">
+                <br />
                 
-            </div>
-            
-            <div id="globalVSderiv">
-                <div class="dataframes">
-                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="demscoreVSdemderiv.html" height="500" width="700"></iframe>
-                </div>
+                <h2 class="subheading">Conclusions</h2>
+                <p>
+                    After discovering a statistically significant correlational relationship between American liberalism and worldwide democratic scores, we attempt to reveal the nature of this relationship by process of elimination. After eliminating nearly all of the different potential underlying sources of this relationship, I must draw the conclusion that American political leaning and worldwide democratic scores are not directly related, but rather that there is a third external factor that influences both.
+                    
+                    <br /><br />
+                    
+                    If I have foregone a possibility, or any general commentary, please feel free to contact me via my email &mdash; mortazaxmoradi@gmail.com. Thank you for reading.
+                    
+                    <br /><br />
+                    <br />
+                </p>
+                
+                <!--<div class="dataframes">
+                    <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="branchesVSdemscore.html" height="500" width="700"></iframe>
+                </div>-->
             </div>
         </div>
     </center>
